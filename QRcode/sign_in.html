@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登入系統</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background: #f4f4f4; margin: 0; }
+        .login-container {
+            width: 90%; max-width: 350px;
+            margin: 10vh auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        input, button { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
+        button { background-color: blue; color: white; cursor: pointer; }
+        #qr-container { margin-top: 20px; display: none; }
+        #qr-image { width: 150px; height: 150px; border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>請登入</h2>
+        <input type="text" id="username" placeholder="帳號">
+        <input type="password" id="password" placeholder="密碼">
+        <button onclick="login()">登入</button>
+        
+        <div id="qr-container">
+            <h3>您的 QR Code：</h3>
+            <img id="qr-image" src="" alt="QR Code">
+        </div>
+    </div>
+
+    <script>
+        // 設定帳號與密碼
+        const users = [
+            { username: "A1", password: "A111", qrUrl: "https://github.com/Otter-p/work/blob/main/A1.png?raw=true"},
+            { username: "A2", password: "A222", qrUrl: "https://raw.githubusercontent.com/Otter-p/倉庫名/分支名/圖片路徑/A2_qr.png" },
+            { username: "03", password: "333", qrUrl: "https://raw.githubusercontent.com/Otter-p/倉庫名/分支名/圖片路徑/A3_qr.png" }
+        ];
+
+        function login() {
+            let username = document.getElementById("username").value.trim();
+            let password = document.getElementById("password").value.trim();
+            let qrContainer = document.getElementById("qr-container");
+            let qrImage = document.getElementById("qr-image");
+
+            let user = users.find(u => u.username === username && u.password === password);
+
+            if (user) {
+                qrImage.src = user.qrUrl; // 直接載入 GitHub 上的 QR Code 圖片
+                qrContainer.style.display = "block";
+            } else {
+                alert("帳號或密碼錯誤");
+                qrContainer.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
