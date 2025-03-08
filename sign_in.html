@@ -19,6 +19,7 @@
             button { background-color: blue; color: white; cursor: pointer; }
             #qr-container { margin-top: 20px; display: none; }
             #qr-image { width: 150px; height: 150px; border: 1px solid #ccc; }
+            #school-name { margin-top: 10px; font-size: 18px; color: #333; }
         </style>
     </head>
     <body>
@@ -36,54 +37,40 @@
         </div>
     
         <script>
-            // 設定帳號與密碼
+            // 設定帳號、密碼和學校名稱
             const users = [
-                { username: "A1", password: "A1", qrUrl: "https://github.com/Otter-p/work/blob/main/A1.png?raw=true",school: "世紀綠能工商"},
-                { username: "A2", password: "A2", qrUrl: "https://github.com/Otter-p/work/blob/main/A2.png?raw=true"},
-                { username: "A3", password: "A3", qrUrl: "https://github.com/Otter-p/work/blob/main/A3.png?raw=true"},
-                { username: "A4", password: "A4", qrUrl: "https://github.com/Otter-p/work/blob/main/A4.png?raw=true"},
-                { username: "B1", password: "B1", qrUrl: "https://github.com/Otter-p/work/blob/main/B1.png?raw=true"},
-                { username: "B2", password: "B2", qrUrl: "https://github.com/Otter-p/work/blob/main/B2.png?raw=true"},
-                { username: "B3", password: "B3", qrUrl: "https://github.com/Otter-p/work/blob/main/B3.png?raw=true"},
-                { username: "B4", password: "B4", qrUrl: "https://github.com/Otter-p/work/blob/main/B4.png?raw=true"},
-                { username: "B5", password: "B5", qrUrl: "https://github.com/Otter-p/work/blob/main/B5.png?raw=true"},
-                { username: "B6", password: "B6", qrUrl: "https://github.com/Otter-p/work/blob/main/B6.png?raw=true"},
-                { username: "B7", password: "B7", qrUrl: "https://github.com/Otter-p/work/blob/main/B7.png?raw=true"},
-                { username: "B8", password: "B8", qrUrl: "https://github.com/Otter-p/work/blob/main/B8.png?raw=true"},
-                { username: "B9", password: "B9", qrUrl: "https://github.com/Otter-p/work/blob/main/B9.png?raw=true"},
-                { username: "B10", password: "B10", qrUrl: "https://github.com/Otter-p/work/blob/main/B10.png?raw=true"},
-                { username: "B11", password: "B11", qrUrl: "https://github.com/Otter-p/work/blob/main/B11.png?raw=true"},
-                { username: "B12", password: "B12", qrUrl: "https://github.com/Otter-p/work/blob/main/B12.png?raw=true"},
-                { username: "B13", password: "B13", qrUrl: "https://github.com/Otter-p/work/blob/main/B13.png?raw=true"},
-                { username: "B14", password: "B14", qrUrl: "https://github.com/Otter-p/work/blob/main/B14.png?raw=true"},
-                { username: "B15", password: "B15", qrUrl: "https://github.com/Otter-p/work/blob/main/B15.png?raw=true"},
-                { username: "B16", password: "B16", qrUrl: "https://github.com/Otter-p/work/blob/main/B16.png?raw=true"},
-                { username: "B17", password: "B17", qrUrl: "https://github.com/Otter-p/work/blob/main/B17.png?raw=true"},
-                { username: "B18", password: "B18", qrUrl: "https://github.com/Otter-p/work/blob/main/B18.png?raw=true"},
-                { username: "B19", password: "B19", qrUrl: "https://github.com/Otter-p/work/blob/main/B19.png?raw=true"},
-                { username: "B20", password: "B20", qrUrl: "https://github.com/Otter-p/work/blob/main/B20.png?raw=true"},
-                { username: "C1", password: "C1", qrUrl: "https://github.com/Otter-p/work/blob/main/C1.png?raw=true"},
-                { username: "C1", password: "C1", qrUrl: "https://github.com/Otter-p/work/blob/main/C1.png?raw=true"},
-                { username: "C1", password: "C1", qrUrl: "https://github.com/Otter-p/work/blob/main/C1.png?raw=true"},
-                { username: "C1", password: "C1", qrUrl: "https://github.com/Otter-p/work/blob/main/C1.png?raw=true"},
-                { username: "C1", password: "C1", qrUrl: "https://github.com/Otter-p/work/blob/main/C1.png?raw=true"},
-                { username: "C1", password: "C1", qrUrl: "https://github.com/Otter-p/work/blob/main/C1.png?raw=true"},
-                { username: "C1", password: "C1", qrUrl: "https://github.com/Otter-p/work/blob/main/C1.png?raw=true"},
-                { username: "C1", password: "C1", qrUrl: "https://github.com/Otter-p/work/blob/main/C1.png?raw=true"},
-                { username: "C1", password: "C1", qrUrl: "https://github.com/Otter-p/work/blob/main/C1.png?raw=true"},
-                { username: "C1", password: "C1", qrUrl: "https://github.com/Otter-p/work/blob/main/C1.png?raw=true"},
-                { username: "C1", password: "C1", qrUrl: "https://github.com/Otter-p/work/blob/main/C1.png?raw=true"},
-                { username: "C1", password: "C1", qrUrl: "https://github.com/Otter-p/work/blob/main/C1.png?raw=true"},
-                { username: "C1", password: "C1", qrUrl: "https://github.com/Otter-p/work/blob/main/C1.png?raw=true"},
-                { username: "C1", password: "C1", qrUrl: "https://github.com/Otter-p/work/blob/main/C1.png?raw=true"},
-                { username: "C1", password: "C1", qrUrl: "https://github.com/Otter-p/work/blob/main/C1.png?raw=true"},
-                { username: "C1", password: "C1", qrUrl: "https://github.com/Otter-p/work/blob/main/C1.png?raw=true"},
+                { username: "A1", password: "A1", qrUrl: "https://github.com/Otter-p/work/blob/main/A1.png?raw=true", school: "世紀綠能工商"},
+                { username: "A2", password: "A222", qrUrl: "https://github.com/Otter-p/work/blob/main/A2.png?raw=true"},
+                { username: "A3", password: "A333", qrUrl: "https://github.com/Otter-p/work/blob/main/A3.png?raw=true"},
+                { username: "A4", password: "A444", qrUrl: "https://github.com/Otter-p/work/blob/main/A4.png?raw=true"},
+                { username: "B1", password: "B111", qrUrl: "https://github.com/Otter-p/work/blob/main/B1.png?raw=true"},
+                { username: "B2", password: "B222", qrUrl: "https://github.com/Otter-p/work/blob/main/B2.png?raw=true"},
+                { username: "B3", password: "B333", qrUrl: "https://github.com/Otter-p/work/blob/main/B3.png?raw=true"},
+                { username: "B4", password: "B444", qrUrl: "https://github.com/Otter-p/work/blob/main/B4.png?raw=true"},
+                { username: "B5", password: "B555", qrUrl: "https://github.com/Otter-p/work/blob/main/B5.png?raw=true"},
+                { username: "B6", password: "B666", qrUrl: "https://github.com/Otter-p/work/blob/main/B6.png?raw=true"},
+                { username: "B7", password: "B777", qrUrl: "https://github.com/Otter-p/work/blob/main/B7.png?raw=true"},
+                { username: "B8", password: "B888", qrUrl: "https://github.com/Otter-p/work/blob/main/B8.png?raw=true"},
+                { username: "B9", password: "B999", qrUrl: "https://github.com/Otter-p/work/blob/main/B9.png?raw=true"},
+                { username: "B10", password: "B1010", qrUrl: "https://github.com/Otter-p/work/blob/main/B10.png?raw=true"},
+                { username: "B11", password: "B1111", qrUrl: "https://github.com/Otter-p/work/blob/main/B11.png?raw=true"},
+                { username: "B12", password: "B1212", qrUrl: "https://github.com/Otter-p/work/blob/main/B12.png?raw=true"},
+                { username: "B13", password: "B1313", qrUrl: "https://github.com/Otter-p/work/blob/main/B13.png?raw=true"},
+                { username: "B14", password: "B1414", qrUrl: "https://github.com/Otter-p/work/blob/main/B14.png?raw=true"},
+                { username: "B15", password: "B1515", qrUrl: "https://github.com/Otter-p/work/blob/main/B15.png?raw=true"},
+                { username: "B16", password: "B1616", qrUrl: "https://github.com/Otter-p/work/blob/main/B16.png?raw=true"},
+                { username: "B17", password: "B1717", qrUrl: "https://github.com/Otter-p/work/blob/main/B17.png?raw=true"},
+                { username: "B18", password: "B1818", qrUrl: "https://github.com/Otter-p/work/blob/main/B18.png?raw=true"},
+                { username: "B19", password: "B1919", qrUrl: "https://github.com/Otter-p/work/blob/main/B19.png?raw=true"},
+                { username: "B20", password: "B2020", qrUrl: "https://github.com/Otter-p/work/blob/main/B20.png?raw=true"},
+                { username: "C1", password: "C111", qrUrl: "https://github.com/Otter-p/work/blob/main/C1.png?raw=true"},
             ];
     
             function login() {
-                // 先清除之前顯示的 QR Code
+                // 先清除之前顯示的 QR Code 和學校名稱
                 let qrContainer = document.getElementById("qr-container");
                 let qrImage = document.getElementById("qr-image");
+                let schoolName = document.getElementById("school-name");
     
                 // 取得帳號和密碼
                 let username = document.getElementById("username").value.trim();
@@ -95,10 +82,11 @@
                 // 檢查帳號和密碼是否正確
                 if (user) {
                     qrImage.src = user.qrUrl; // 直接載入正確的 QR Code 圖片
-                    qrContainer.style.display = "block"; // 顯示 QR Code
+                    schoolName.textContent = `學校名稱：${user.school}`; // 顯示學校名稱
+                    qrContainer.style.display = "block"; // 顯示 QR Code 和學校名稱
                 } else {
                     alert("帳號或密碼錯誤");
-                    qrContainer.style.display = "none"; // 如果登入錯誤則隱藏 QR Code
+                    qrContainer.style.display = "none"; // 如果登入錯誤則隱藏 QR Code 和學校名稱
                 }
     
                 // 清除帳號和密碼欄位的值，讓使用者可以再次登入
