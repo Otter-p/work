@@ -19,7 +19,7 @@
             button { background-color: blue; color: white; cursor: pointer; }
             #qr-container { margin-top: 20px; display: none; }
             #qr-image { width: 150px; height: 150px; border: 1px solid #ccc; }
-            #school-name { margin-top: 10px; font-size: 18px; color: #333; }
+            #company-name { margin-top: 10px; font-size: 18px; color: #333; }
         </style>
     </head>
     <body>
@@ -32,65 +32,65 @@
             <div id="qr-container">
                 <h3>您的 QR Code：</h3>
                 <img id="qr-image" src="" alt="QR Code">
-                <p id="school-name"></p> <!-- 顯示學校名稱 -->
+                <p id="company-name"></p> <!-- 顯示公司名稱 -->
             </div>
         </div>
     
         <script>
             // 設定帳號、密碼和學校名稱
             const users = [
-                { username: "A1", password: "A1", qrUrl: "https://github.com/Otter-p/work/blob/main/A1.png?raw=true", company: "台灣橫浜八景島Xpark"},
-                { username: "A2", password: "A2", qrUrl: "https://github.com/Otter-p/work/blob/main/A2.png?raw=true", company: "日月光科技股份有限公司"},
-                { username: "B1", password: "B1", qrUrl: "https://github.com/Otter-p/work/blob/main/A3.png?raw=true", company: "漢民科技"},
-                { username: "B2", password: "B2", qrUrl: "https://github.com/Otter-p/work/blob/main/A4.png?raw=true", company: "美科科技切削液公司"},
-                { username: "B3", password: "B3", qrUrl: "https://github.com/Otter-p/work/blob/main/B1.png?raw=true", company: "明基材料"},
-                { username: "B4", password: "B4", qrUrl: "https://github.com/Otter-p/work/blob/main/B2.png?raw=true", company: "葡萄王生技"},
-                { username: "B5", password: "B5", qrUrl: "https://github.com/Otter-p/work/blob/main/B3.png?raw=true", company: "耀登集團"},
-                { username: "B6", password: "B6", qrUrl: "https://github.com/Otter-p/work/blob/main/B4.png?raw=true", company: "宣系統科技"},
-                { username: "B7", password: "B7", qrUrl: "https://github.com/Otter-p/work/blob/main/B5.png?raw=true", company: "德烜科技"},
-                { username: "B8", password: "B8", qrUrl: "https://github.com/Otter-p/work/blob/main/B6.png?raw=true", company: "台灣房屋集團"},
-                { username: "B9", password: "B9", qrUrl: "https://github.com/Otter-p/work/blob/main/A1.png?raw=true", company: "鑫野智動"},
-                { username: "B10", password: "B10", qrUrl: "https://github.com/Otter-p/work/blob/main/A2.png?raw=true", company: "科達製藥"},
-                { username: "B11", password: "B11", qrUrl: "https://github.com/Otter-p/work/blob/main/A3.png?raw=true", company: "時碩工業"},
-                { username: "B12", password: "B12", qrUrl: "https://github.com/Otter-p/work/blob/main/A4.png?raw=true", company: "紅日應材"},
-                { username: "B13", password: "B13", qrUrl: "https://github.com/Otter-p/work/blob/main/B1.png?raw=true", company: "靖洋集團"},
-                { username: "B14", password: "B14", qrUrl: "https://github.com/Otter-p/work/blob/main/A2.png?raw=true", company: "昕鴻科技"},
-                { username: "B15", password: "B15", qrUrl: "https://github.com/Otter-p/work/blob/main/A3.png?raw=true", company: "碩陽電機集團"},
-                { username: "B16", password: "B16", qrUrl: "https://github.com/Otter-p/work/blob/main/A4.png?raw=true", company: "邑昇實業"},
-                { username: "B17", password: "B17", qrUrl: "https://github.com/Otter-p/work/blob/main/B1.png?raw=true", company: "協易機械"},
-                { username: "B18", password: "B18", qrUrl: "https://github.com/Otter-p/work/blob/main/A2.png?raw=true", company: "桃園捷運"},
-                { username: "B19", password: "B19", qrUrl: "https://github.com/Otter-p/work/blob/main/A3.png?raw=true", company: "同一工業"},
-                { username: "B20", password: "B20", qrUrl: "https://github.com/Otter-p/work/blob/main/A4.png?raw=true", company: "弘塑集團"},
-                { username: "C1", password: "C1", qrUrl: "https://github.com/Otter-p/work/blob/main/B1.png?raw=true", company: "家樂福"},
-                { username: "C2", password: "C2", qrUrl: "https://github.com/Otter-p/work/blob/main/A2.png?raw=true", company: "全家便利商店"},
-                { username: "C3", password: "C3", qrUrl: "https://github.com/Otter-p/work/blob/main/A3.png?raw=true", company: "桃園大溪笠復威斯汀度假酒店"},
-                { username: "C4", password: "C4", qrUrl: "https://github.com/Otter-p/work/blob/main/A4.png?raw=true", company: "台灣善商"},
-                { username: "C5", password: "C5", qrUrl: "https://github.com/Otter-p/work/blob/main/B1.png?raw=true", company: "永潤食品"},
-                { username: "C6", password: "C6", qrUrl: "https://github.com/Otter-p/work/blob/main/A2.png?raw=true", company: "復空食品"},
-                { username: "C7", password: "C7", qrUrl: "https://github.com/Otter-p/work/blob/main/A3.png?raw=true", company: "華城電機"},
-                { username: "C8", password: "C8", qrUrl: "https://github.com/Otter-p/work/blob/main/A4.png?raw=true", company: "統一超商"},
-                { username: "C9", password: "C9", qrUrl: "https://github.com/Otter-p/work/blob/main/B1.png?raw=true", company: "統一速達（黑貓宅急便）"},
-                { username: "C10", password: "C10", qrUrl: "https://github.com/Otter-p/work/blob/main/A2.png?raw=true", company: "三井資訊"},
-                { username: "C11", password: "C11", qrUrl: "https://github.com/Otter-p/work/blob/main/A3.png?raw=true", company: "技嘉科技"},
-                { username: "C12", password: "C12", qrUrl: "https://github.com/Otter-p/work/blob/main/A4.png?raw=true", company: "肯微科技"},
-                { username: "C13", password: "C13", qrUrl: "https://github.com/Otter-p/work/blob/main/B1.png?raw=true", company: "東元電機TECO"},
-                { username: "C14", password: "C14", qrUrl: "https://github.com/Otter-p/work/blob/main/A2.png?raw=true", company: "國瑞汽車"},
-                { username: "C15", password: "C15", qrUrl: "https://github.com/Otter-p/work/blob/main/A3.png?raw=true", company: "新應材"},
-                { username: "C16", password: "C16", qrUrl: "https://github.com/Otter-p/work/blob/main/A4.png?raw=true", company: "友輝光電"},
-                { username: "C17", password: "C17", qrUrl: "https://github.com/Otter-p/work/blob/main/B1.png?raw=true", company: "欣興電子"},
-                { username: "C18", password: "C18", qrUrl: "https://github.com/Otter-p/work/blob/main/A1.png?raw=true", company: "精材科技"},
-                { username: "C19", password: "C19", qrUrl: "https://github.com/Otter-p/work/blob/main/A2.png?raw=true", company: "景碩科技"},
-                { username: "C20", password: "C20", qrUrl: "https://github.com/Otter-p/work/blob/main/A3.png?raw=true", company: "東培工業"},
-                { username: "C21", password: "C21", qrUrl: "https://github.com/Otter-p/work/blob/main/A4.png?raw=true", company: "世紀集團"},
-                { username: "C22", password: "C22", qrUrl: "https://github.com/Otter-p/work/blob/main/B1.png?raw=true", company: "復盛應用科技"},
-                { username: "C23", password: "C23", qrUrl: "https://github.com/Otter-p/work/blob/main/B1.png?raw=true", company: "春源鋼鐵"},
+                { username: "A1", password: "A1", qrUrl: "https://github.com/Otter-p/work/blob/main/A1A.png?raw=true", company: "台灣橫浜八景島Xpark"},
+                { username: "A2", password: "A2", qrUrl: "https://github.com/Otter-p/work/blob/main/A2A.png?raw=true", company: "日月光科技股份有限公司"},
+                { username: "B1", password: "B1", qrUrl: "https://github.com/Otter-p/work/blob/main/B1B.png?raw=true", company: "漢民科技"},
+                { username: "B2", password: "B2", qrUrl: "https://github.com/Otter-p/work/blob/main/B2B.png?raw=true", company: "美科科技切削液公司"},
+                { username: "B3", password: "B3", qrUrl: "https://github.com/Otter-p/work/blob/main/B3B.png?raw=true", company: "明基材料"},
+                { username: "B4", password: "B4", qrUrl: "https://github.com/Otter-p/work/blob/main/B4B.png?raw=true", company: "葡萄王生技"},
+                { username: "B5", password: "B5", qrUrl: "https://github.com/Otter-p/work/blob/main/B5B.png?raw=true", company: "耀登集團"},
+                { username: "B6", password: "B6", qrUrl: "https://github.com/Otter-p/work/blob/main/B6B.png?raw=true", company: "宣系統科技"},
+                { username: "B7", password: "B7", qrUrl: "https://github.com/Otter-p/work/blob/main/B7B.png?raw=true", company: "德烜科技"},
+                { username: "B8", password: "B8", qrUrl: "https://github.com/Otter-p/work/blob/main/B8B.png?raw=true", company: "台灣房屋集團"},
+                { username: "B9", password: "B9", qrUrl: "https://github.com/Otter-p/work/blob/main/B9B.png?raw=true", company: "鑫野智動"},
+                { username: "B10", password: "B10", qrUrl: "https://github.com/Otter-p/work/blob/main/B10B.png?raw=true", company: "科達製藥"},
+                { username: "B11", password: "B11", qrUrl: "https://github.com/Otter-p/work/blob/main/B11B.png?raw=true", company: "時碩工業"},
+                { username: "B12", password: "B12", qrUrl: "https://github.com/Otter-p/work/blob/main/B12B.png?raw=true", company: "紅日應材"},
+                { username: "B13", password: "B13", qrUrl: "https://github.com/Otter-p/work/blob/main/B13B.png?raw=true", company: "靖洋集團"},
+                { username: "B14", password: "B14", qrUrl: "https://github.com/Otter-p/work/blob/main/B14B.png?raw=true", company: "昕鴻科技"},
+                { username: "B15", password: "B15", qrUrl: "https://github.com/Otter-p/work/blob/main/B15B.png?raw=true", company: "碩陽電機集團"},
+                { username: "B16", password: "B16", qrUrl: "https://github.com/Otter-p/work/blob/main/B16B.png?raw=true", company: "邑昇實業"},
+                { username: "B17", password: "B17", qrUrl: "https://github.com/Otter-p/work/blob/main/B17B.png?raw=true", company: "協易機械"},
+                { username: "B18", password: "B18", qrUrl: "https://github.com/Otter-p/work/blob/main/B18B.png?raw=true", company: "桃園捷運"},
+                { username: "B19", password: "B19", qrUrl: "https://github.com/Otter-p/work/blob/main/B19B.png?raw=true", company: "同一工業"},
+                { username: "B20", password: "B20", qrUrl: "https://github.com/Otter-p/work/blob/main/B20B.png?raw=true", company: "弘塑集團"},
+                { username: "C1", password: "C1", qrUrl: "https://github.com/Otter-p/work/blob/main/C1C.png?raw=true", company: "家樂福"},
+                { username: "C2", password: "C2", qrUrl: "https://github.com/Otter-p/work/blob/main/C2C.png?raw=true", company: "全家便利商店"},
+                { username: "C3", password: "C3", qrUrl: "https://github.com/Otter-p/work/blob/main/C3C.png?raw=true", company: "桃園大溪笠復威斯汀度假酒店"},
+                { username: "C4", password: "C4", qrUrl: "https://github.com/Otter-p/work/blob/main/C4C.png?raw=true", company: "台灣善商"},
+                { username: "C5", password: "C5", qrUrl: "https://github.com/Otter-p/work/blob/main/C5C.png?raw=true", company: "永潤食品"},
+                { username: "C6", password: "C6", qrUrl: "https://github.com/Otter-p/work/blob/main/C6C.png?raw=true", company: "復空食品"},
+                { username: "C7", password: "C7", qrUrl: "https://github.com/Otter-p/work/blob/main/C7C.png?raw=true", company: "華城電機"},
+                { username: "C8", password: "C8", qrUrl: "https://github.com/Otter-p/work/blob/main/C8C.png?raw=true", company: "統一超商"},
+                { username: "C9", password: "C9", qrUrl: "https://github.com/Otter-p/work/blob/main/C9C.png?raw=true", company: "統一速達（黑貓宅急便）"},
+                { username: "C10", password: "C10", qrUrl: "https://github.com/Otter-p/work/blob/main/C10C.png?raw=true", company: "三井資訊"},
+                { username: "C11", password: "C11", qrUrl: "https://github.com/Otter-p/work/blob/main/C11C.png?raw=true", company: "技嘉科技"},
+                { username: "C12", password: "C12", qrUrl: "https://github.com/Otter-p/work/blob/main/C12C.png?raw=true", company: "肯微科技"},
+                { username: "C13", password: "C13", qrUrl: "https://github.com/Otter-p/work/blob/main/C13C.png?raw=true", company: "東元電機TECO"},
+                { username: "C14", password: "C14", qrUrl: "https://github.com/Otter-p/work/blob/main/C14C.png?raw=true", company: "國瑞汽車"},
+                { username: "C15", password: "C15", qrUrl: "https://github.com/Otter-p/work/blob/main/C15C.png?raw=true", company: "新應材"},
+                { username: "C16", password: "C16", qrUrl: "https://github.com/Otter-p/work/blob/main/C16C.png?raw=true", company: "友輝光電"},
+                { username: "C17", password: "C17", qrUrl: "https://github.com/Otter-p/work/blob/main/C17C.png?raw=true", company: "欣興電子"},
+                { username: "C18", password: "C18", qrUrl: "https://github.com/Otter-p/work/blob/main/C18C.png?raw=true", company: "精材科技"},
+                { username: "C19", password: "C19", qrUrl: "https://github.com/Otter-p/work/blob/main/C19C.png?raw=true", company: "景碩科技"},
+                { username: "C20", password: "C20", qrUrl: "https://github.com/Otter-p/work/blob/main/C20C.png?raw=true", company: "東培工業"},
+                { username: "C21", password: "C21", qrUrl: "https://github.com/Otter-p/work/blob/main/C21C.png?raw=true", company: "世紀集團"},
+                { username: "C22", password: "C22", qrUrl: "https://github.com/Otter-p/work/blob/main/C22C.png?raw=true", company: "復盛應用科技"},
+                { username: "C23", password: "C23", qrUrl: "https://github.com/Otter-p/work/blob/main/C23C.png?raw=true", company: "春源鋼鐵"},
             ];
     
             function login() {
                 // 先清除之前顯示的 QR Code 和學校名稱
                 let qrContainer = document.getElementById("qr-container");
                 let qrImage = document.getElementById("qr-image");
-                let schoolName = document.getElementById("school-name");
+                let companyName = document.getElementById("company-name");
     
                 // 取得帳號和密碼
                 let username = document.getElementById("username").value.trim();
@@ -102,8 +102,8 @@
                 // 檢查帳號和密碼是否正確
                 if (user) {
                     qrImage.src = user.qrUrl; // 直接載入正確的 QR Code 圖片
-                    schoolName.textContent = `學校名稱：${user.school}`; // 顯示學校名稱
-                    qrContainer.style.display = "block"; // 顯示 QR Code 和學校名稱
+                    companyName.textContent = `公司名稱：${user.company}`; // 顯示公司名稱
+                    qrContainer.style.display = "block"; // 顯示 QR Code 和公司名稱
                 } else {
                     alert("帳號或密碼錯誤");
                     qrContainer.style.display = "none"; // 如果登入錯誤則隱藏 QR Code 和學校名稱
